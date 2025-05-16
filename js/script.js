@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Khởi tạo date picker và time picker
     const fpDate = flatpickr("#taskDate", {
         dateFormat: "d-m-Y",
         locale: "vi",
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         minuteIncrement: 1
     });
 
+    // ===== CHỨC NĂNG TICK HOÀN THÀNH TASK =====
     document.querySelectorAll('.tasks-list').forEach(function (list) {
         list.addEventListener('change', function (e) {
             if (e.target.type === 'checkbox') {
@@ -25,11 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ===== CHỨC NĂNG XÓA TASK =====
     document.querySelectorAll('.tasks-list').forEach(function (list) {
         list.addEventListener('click', function (e) {
             if (e.target.closest('.delete-btn')) {
                 const taskItem = e.target.closest('.task-item');
                 if (taskItem) {
+                    // Xóa task khỏi DOM
                     taskItem.remove();
                 }
             }
@@ -43,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const taskDateInput = document.getElementById('taskDate');
     const taskTimeInput = document.getElementById('taskTime');
 
+    // Khai báo các biến hiển thị lỗi
     const taskNameError = document.getElementById('taskNameError');
     const taskDescriptionError = document.getElementById('taskDescriptionError');
     const taskDateError = document.getElementById('taskDateError');
@@ -55,10 +60,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (taskDateError) taskDateError.textContent = '';
         if (taskTimeError) taskTimeError.textContent = '';
 
+        // Lấy giá trị từ các trường input
         const description = taskDescriptionInput.value.trim();
         const date = taskDateInput.value.trim();
         const time = taskTimeInput.value.trim();
 
+        // Kiểm tra các trường bắt buộc
         if (description === '') {
             if (taskDescriptionError) taskDescriptionError.textContent = 'Mô tả không được để trống.';
             isValid = false;
@@ -76,16 +83,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return isValid;
     }
 
+    // ===== CHỨC NĂNG THÊM TASK MỚI =====
     if (taskForm) {
         taskForm.addEventListener('submit', function (e) {
             e.preventDefault();
-
             if (validateTaskForm()) {
+                // Lấy giá trị từ các trường input
                 const name = taskNameInput.value.trim();
-                const description = taskDescriptionInput.value.trim();
                 const date = taskDateInput.value.trim();
                 const time = taskTimeInput.value.trim();
 
+                // Tạo HTML cho task mới
                 const taskItemHTML = `
                     <div class="task-item active">
                         <div class="task-content">
@@ -100,10 +108,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 `;
 
+                // Thêm task mới vào cuối danh sách
                 if (tasksList) {
                     tasksList.insertAdjacentHTML('beforeend', taskItemHTML);
                 }
 
+                // Reset form và xóa dữ liệu đã chọn
                 taskForm.reset();
                 if (fpDate) fpDate.clear();
                 if (fpTime) fpTime.clear();

@@ -18,12 +18,12 @@ body {
   background: #fff;
   border-radius: 12px;
   -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   padding: 2.5rem;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2.5rem;
 }
 
@@ -69,21 +69,24 @@ body {
 @media (max-width: 992px) {
   .about-info {
     -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
 
 @media (max-width: 768px) {
   .about-content {
-    padding-top: 12rem;
+    padding-top: 16rem;
   }
+
   .about-info {
     padding: 2rem 1.5rem;
   }
+
   .about-info h2 {
     font-size: 1.35rem;
   }
+
   .about-info li {
     font-size: 0.95rem;
     margin-bottom: 0.7rem;
@@ -92,21 +95,26 @@ body {
 
 @media (max-width: 600px) {
   .about-content {
-    padding-top: 10rem;
+    padding-top: 16rem;
   }
+
   .about-container {
     padding: 1.5rem;
   }
+
   .about-info {
     padding: 1.5rem 1rem;
     gap: 1.5rem;
   }
+
   .about-info h2 {
     font-size: 1.25rem;
   }
+
   .about-info li {
     font-size: 0.9rem;
     line-height: 1.6;
   }
 }
+
 /*# sourceMappingURL=about.css.map */
