@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .hor-menu{
+        background-color: rgba(255, 0, 0, 0.808);
+        padding: 10px;
+        font-size: 20px;
+        float: left;
+        display: block;
+        width: 100%;
+    }
+    .hor-menu a{
+        text-decoration: none;
+        padding: 10px;
+        color:white;
+    }
+    .hor-menu a:hover{
+        background-color: rgb(0, 174, 255);
+        color: black;
+
+    }
+    @media only screen and (max-width:600px) {
+        .hor-menu {
+            float: none;
+            padding: 0;
+        }
+        .hor-menu a{
+            display: block;
+            border-bottom: 1px solid wheat;
+            padding-left: 15px;
+        }
+
+    }
+</style>
+<body>
+    <div class="hor-menu">
+        <a href="#">Home</a>
+        <a href="#">News</a>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+    </div>
+</body>
+</html>

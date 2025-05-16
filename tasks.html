@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công việc - Todo List</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="./css/task.css">
+    <link rel="icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-logo">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Todo List</span>
+        </div>
+        <ul class="header-menu">
+            <li><a href="./index.html">Trang chủ</a></li>
+            <li><a href="./tasks.html" class="active">Công việc</a></li>
+            <li><a href="./lab.html">Lab Thực Hành</a></li>
+            <li><a href="./about.html">About Me</a></li>
+        </ul>
+    </div>
+
+    <div class="header">
+        <div class="header-logo">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Todo List</span>
+        </div>
+        <ul class="header-menu">
+            <li><a href="../index.html">Trang chủ</a></li>
+            <li><a href="./tasks.html" class="active">Công việc</a></li>
+            <li><a href="./lab.html">Lab Thực Hành</a></li>
+            <li><a href="./about.html">About Me</a></li>
+        </ul>
+    </div>
+
+    <div class="tasks-content">
+        <div class="container">
+            <div class="tasks-container">
+                <h2>Thêm công việc mới</h2>
+                <form id="taskForm" class="task-form">
+                    <div class="form-group">
+                        <label for="taskName">
+                            <i class="fa-solid fa-pen"></i>
+                            Tên công việc: <span class="required"></span>
+                        </label>
+                        <input type="text" id="taskName" placeholder="Nhập tên công việc..." required>
+                        <div id="taskNameError" class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">
+                            <i class="fa-solid fa-align-left"></i>
+                            Mô tả:
+                        </label>
+                        <textarea id="taskDescription" placeholder="Mô tả chi tiết công việc..."></textarea>
+                        <div id="taskDescriptionError" class="error-message"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskDate">
+                                <i class="fa-solid fa-calendar"></i>
+                                Ngày: <span class="required"></span>
+                            </label>
+                            <input type="text" id="taskDate" class="date-picker" placeholder="Chọn ngày" required>
+                            <div id="taskDateError" class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskTime">
+                                <i class="fa-solid fa-clock"></i>
+                                Giờ: <span class="required"></span>
+                            </label>
+                            <input type="text" id="taskTime" class="time-picker" placeholder="Chọn giờ" required>
+                            <div id="taskTimeError" class="error-message"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-plus"></i>
+                        Thêm công việc
+                    </button>
+                </form>
+            </div>
+            <div class="tasks-filter">
+                <div class="filter-group">
+                    <label for="statusFilter">Trạng thái:</label>
+                    <select id="statusFilter">
+                        <option value="all">Tất cả</option>
+                        <option value="active">Đang thực hiện</option>
+                        <option value="completed">Đã hoàn thành</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="dateFilter">Thời gian:</label>
+                    <select id="dateFilter">
+                        <option value="all">Tất cả</option>
+                        <option value="today">Hôm nay</option>
+                        <option value="tomorrow">Ngày mai</option>
+                        <option value="week">Tuần này</option>
+                        <option value="overdue">Quá hạn</option>
+                    </select>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm công việc...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="sort-group">
+                    <button class="sort-btn">
+                        <i class="fas fa-sort"></i>
+                        Sắp xếp
+                    </button>
+                    <div class="sort-options" id="sortOptions">
+                        <button>Ngày tăng dần</button>
+                        <button>Ngày giảm dần</button>
+                        <button>Mới nhất</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tasks-container">
+                <h2>Danh sách công việc</h2>
+                <div class="tasks-list" id="tasksList">
+                    <div class="task-item active">
+                        <div class="task-content">
+                            <input type="checkbox">
+                            <span class="task-text">Đi ngủ</span>
+                            <span class="task-date">10-05-2025</span>
+                            <span class="task-time">22:00</span>
+                        </div>
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="task-item active">
+                        <div class="task-content">
+                            <input type="checkbox">
+                            <span class="task-text">Học bài</span>
+                            <span class="task-date">10-05-2025</span>
+                            <span class="task-time">20:00</span>
+                        </div>
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="task-item completed">
+                        <div class="task-content">
+                            <input type="checkbox" checked>
+                            <span class="task-text">Ăn cơm</span>
+                            <span class="task-date">01-05-2025</span>
+                            <span class="task-time">18:00</span>
+                        </div>
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="task-item completed">
+                        <div class="task-content">
+                            <input type="checkbox" checked>
+                            <span class="task-text">Uống nước</span>
+                            <span class="task-date">04-05-2025</span>
+                            <span class="task-time">18:30</span>
+                        </div>
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="task-item active">
+                        <div class="task-content">
+                            <input type="checkbox">
+                            <span class="task-text">Tết thiếu nhi</span>
+                            <span class="task-date">01-06-2025</span>
+                            <span class="task-time">00:00</span>
+                        </div>
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về chúng tôi</h3>
+                <p>Todo List - Ứng dụng quản lý công việc đơn giản và hiệu quả</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p><i class="fas fa-envelope"></i> ntiendung04@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +84 123.456.789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Theo dõi chúng tôi</h3>
+                <div class="social">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Họ và tên: Nguyễn Tiến Dũng | MSSV: DH52200537 | Lớp: D22_TH11 | Nhóm 33 Thứ 5 Ca 3</p>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/vi.js"></script>
+</body>
+
+</html>
